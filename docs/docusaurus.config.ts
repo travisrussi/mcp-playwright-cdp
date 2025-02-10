@@ -90,7 +90,7 @@ const config: Config = {
           ],
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Lars Hagen. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ExecuteAutomation, Ltd. CDP Support by Lars Hagen. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
