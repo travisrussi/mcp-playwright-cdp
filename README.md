@@ -1,8 +1,11 @@
 # MCP Playwright CDP
 
+[![smithery badge](https://smithery.ai/badge/@lars-hagen/mcp-playwright-cdp)](https://smithery.ai/server/@lars-hagen/mcp-playwright-cdp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/lars-hagen/mcp-playwright-cdp/blob/main/LICENSE)
+
 A Model Context Protocol server that provides browser automation capabilities using Playwright with Chrome DevTools Protocol (CDP) support. This server enables LLMs to interact with web pages, take screenshots, and execute JavaScript in a real browser environment, with the ability to connect to existing Chrome instances via CDP.
 
-> This is a fork of [executeautomation/mcp-playwright](https://github.com/executeautomation/mcp-playwright) with added CDP support for connecting to running Chrome instances.
+> This is a fork of [executeautomation/mcp-playwright](https://github.com/executeautomation/mcp-playwright) v0.2.7, enhanced with CDP support for connecting to running Chrome instances.
 
 ## Key Features
 
@@ -20,7 +23,7 @@ You can install the package using either npm or Smithery:
 
 Using npm:
 ```bash
-npm install -g
+npm install
 ```
 
 Using Smithery:
@@ -36,12 +39,13 @@ Add this to your Claude Desktop configuration file:
 {
   "mcpServers": {
     "playwright": {
-      "command": "npx",
-      "args": ["mcp-playwright-cdp"]
+      "command": "node",
+      "args": ["/path/to/mcp-playwright/dist/index.js"]
     }
   }
 }
 ```
+Replace `/path/to/mcp-playwright` with your actual path to the repository.
 
 ## CDP Connection
 
@@ -49,7 +53,7 @@ This fork adds the ability to connect to an existing Chrome instance via CDP. To
 
 1. Launch Chrome with remote debugging enabled:
 ```bash
-chrome --remote-debugging-port=9222
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
 ```
 
 2. The server will automatically attempt to connect to the running Chrome instance first, before launching a new browser.
@@ -60,4 +64,4 @@ This project is a fork of [executeautomation/mcp-playwright](https://github.com/
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

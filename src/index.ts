@@ -9,7 +9,7 @@ async function runServer() {
   const server = new Server(
     {
       name: "lars-hagen/mcp-playwright-cdp",
-      version: "0.1.0",
+      version: "0.2.8",
     },
     {
       capabilities: {

@@ -1,8 +1,5 @@
 # Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
 
-name: "@lars-hagen/mcp-playwright-cdp"
-description: "MCP server for Playwright with CDP support"
-
 startCommand:
   type: stdio
   configSchema:

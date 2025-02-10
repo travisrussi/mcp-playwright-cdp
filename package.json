@@ -1,6 +1,6 @@
 {
   "name": "@lars-hagen/mcp-playwright-cdp",
-  "version": "0.1.0",
+  "version": "0.2.8",
   "description": "Model Context Protocol server for Playwright with Chrome DevTools Protocol support",
   "license": "MIT",
   "author": "Lars Hagen",
