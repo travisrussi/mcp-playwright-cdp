@@ -19,7 +19,7 @@ COPY tsconfig.json ./
 RUN npm run build
 
 # Use a minimal Node.js image for running the project
-FROM node:20-alpine AS release
+FROM mcr.microsoft.com/playwright:v1.50.0-jammy AS release
 
 # Set the working directory
 WORKDIR /app
@@ -29,9 +29,8 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/package-lock.json ./package-lock.json
 
-# Install production dependencies
-RUN npm ci --ignore-scripts --omit=dev
-RUN npx playwright install
+# Install production dependencies including Playwright
+RUN npm ci --ignore-scripts --omit=dev && npx playwright install chromium
 
 # Set the command to run the server
 ENTRYPOINT ["node", "dist/index.js"]
