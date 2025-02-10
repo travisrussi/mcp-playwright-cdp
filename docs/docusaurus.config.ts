@@ -5,20 +5,18 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Playwright MCP Server',
-  tagline: 'Fastest way to test your APIs and UI in Playwright with AI 🤖',
+  title: 'MCP Playwright CDP',
+  tagline: 'Browser automation with CDP support for Claude',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://executeautomation.github.io/',
+  url: 'https://lars-hagen.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/mcp-playwright/',
+  baseUrl: '/mcp-playwright-cdp/',
 
   // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'executeautomation', // Usually your GitHub org/user name.
-  projectName: 'mcp-playwright', // Usually your repo name.
+  organizationName: 'lars-hagen', // Your GitHub username
+  projectName: 'mcp-playwright-cdp', // Your repo name
 
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
@@ -38,10 +36,8 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/lars-hagen/mcp-playwright-cdp/tree/main/docs/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -51,12 +47,11 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/ea-icon.png',
+    image: 'img/social-card.jpg',
     navbar: {
-      title: 'Playwright MCP Server',
+      title: 'MCP Playwright CDP',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'MCP Playwright CDP Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -64,10 +59,10 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Docs',
         },
         {
-          href: 'https://github.com/executeautomation/mcp-playwright',
+          href: 'https://github.com/lars-hagen/mcp-playwright-cdp',
           label: 'GitHub',
           position: 'right',
         },
@@ -80,38 +75,22 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Documentation',
               to: '/docs/intro',
-            },
-            {
-              label: 'Playwright MCP for UI',
-              href: 'https://youtu.be/8CcgFUE16HM',
-            },
-            {
-              label: 'Playwright MCP for API',
-              href: 'https://youtu.be/BYYyoRxCcFE',
-            },
+            }
           ],
         },
         {
-          title: 'Community',
+          title: 'More',
           items: [
             {
-              label: 'Youtube',
-              href: 'https://youtube.com/executeautomation',
-            },
-            {
-              label: 'Udemy',
-              href: 'https://www.udemy.com/user/karthik-kk',
-            },
-            {
-              label: 'X',
-              href: 'http://x.com/ExecuteAuto',
-            },
+              label: 'GitHub',
+              href: 'https://github.com/lars-hagen/mcp-playwright-cdp',
+            }
           ],
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} ExecuteAutomation Pvt Ltd.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Lars Hagen. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
