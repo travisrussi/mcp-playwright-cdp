@@ -31,6 +31,7 @@ COPY --from=builder /app/package-lock.json ./package-lock.json
 
 # Install production dependencies
 RUN npm ci --ignore-scripts --omit=dev
+RUN npx playwright install
 
 # Set the command to run the server
 ENTRYPOINT ["node", "dist/index.js"]
