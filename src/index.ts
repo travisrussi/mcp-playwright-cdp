@@ -8,8 +8,8 @@ import { setupRequestHandlers } from "./requestHandler.js";
 async function runServer() {
   const server = new Server(
     {
-      name: "executeautomation/playwright-mcp-server",
-      version: "0.2.7",
+      name: "lars-hagen/mcp-playwright-cdp",
+      version: "0.1.0",
     },
     {
       capabilities: {

@@ -20,8 +20,18 @@ type ViewportSize = {
 
 async function ensureBrowser(viewport?: ViewportSize) {
   if (!browser) {
-    browser = await chromium.launch({ headless: false });
-    const context = await browser.newContext({
+    try {
+      // First try to connect to existing Chrome instance
+      browser = await chromium.connectOverCDP('http://localhost:9222');
+      //console.log('Connected to existing Chrome instance');
+    } catch (error) {
+      //console.log('No existing Chrome instance found, launching new browser');
+      browser = await chromium.launch({ headless: false });
+    }
+
+    // For CDP connections, we need to use contexts() first
+    const contexts = await browser.contexts();
+    const context = contexts[0] || await browser.newContext({
       viewport: {
         width: viewport?.width ?? 1920,
         height: viewport?.height ?? 1080,

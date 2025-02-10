@@ -1,46 +1,63 @@
-# Playwright MCP Server
+# MCP Playwright CDP
 
-[![smithery badge](https://smithery.ai/badge/@executeautomation/playwright-mcp-server)](https://smithery.ai/server/@executeautomation/playwright-mcp-server)
+A Model Context Protocol server that provides browser automation capabilities using Playwright with Chrome DevTools Protocol (CDP) support. This server enables LLMs to interact with web pages, take screenshots, and execute JavaScript in a real browser environment, with the ability to connect to existing Chrome instances via CDP.
 
-A Model Context Protocol server that provides browser automation capabilities using Playwright. This server enables LLMs to interact with web pages, take screenshots, and execute JavaScript in a real browser environment.
+> This is a fork of [executeautomation/mcp-playwright](https://github.com/executeautomation/mcp-playwright) with added CDP support for connecting to running Chrome instances.
 
-<a href="https://glama.ai/mcp/servers/yh4lgtwgbe"><img width="380" height="200" src="https://glama.ai/mcp/servers/yh4lgtwgbe/badge" alt="mcp-playwright MCP server" /></a>
+## Key Features
 
-## Screenshot
-![Playwright + Claude](image/playwright_claude.png)
-
-## [Documentation](https://executeautomation.github.io/mcp-playwright/) | [API reference](https://executeautomation.github.io/mcp-playwright/docs/playwright-web/Supported-Tools)
+- 🔗 Connect to existing Chrome instances via CDP
+- 🌐 Full browser automation capabilities
+- 📸 Screenshot capture of entire pages or specific elements
+- 🖱️ Comprehensive web interactions (navigation, clicking, form filling)
+- 📊 Console log monitoring
+- 🔧 JavaScript execution in browser context
+- 🌍 HTTP API testing support
 
 ## Installation
 
-You can install the package using either npm, mcp-get, or Smithery:
+You can install the package using either npm or Smithery:
 
 Using npm:
 ```bash
-npm install -g @executeautomation/playwright-mcp-server
+npm install -g
 ```
 
-Using mcp-get:
+Using Smithery:
 ```bash
-npx @michaellatman/mcp-get@latest install @executeautomation/playwright-mcp-server
+npx -y @smithery/cli install @lars-hagen/mcp-playwright-cdp --client claude
 ```
-Using Smithery
 
-To install Playwright MCP for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@executeautomation/playwright-mcp-server):
+## Configuration
 
-```bash
-npx -y @smithery/cli install @executeautomation/playwright-mcp-server --client claude
-```
-## Configuration to use Playwright Server
-Here's the Claude Desktop configuration to use the Playwright server:
+Add this to your Claude Desktop configuration file:
 
 ```json
 {
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@executeautomation/playwright-mcp-server"]
+      "args": ["mcp-playwright-cdp"]
     }
   }
 }
 ```
+
+## CDP Connection
+
+This fork adds the ability to connect to an existing Chrome instance via CDP. To use this feature:
+
+1. Launch Chrome with remote debugging enabled:
+```bash
+chrome --remote-debugging-port=9222
+```
+
+2. The server will automatically attempt to connect to the running Chrome instance first, before launching a new browser.
+
+## Credits
+
+This project is a fork of [executeautomation/mcp-playwright](https://github.com/executeautomation/mcp-playwright), enhanced with CDP support for connecting to running Chrome instances.
+
+## License
+
+MIT

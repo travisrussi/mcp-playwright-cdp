@@ -1,15 +1,15 @@
 {
-  "name": "@executeautomation/playwright-mcp-server",
-  "version": "0.2.7",
-  "description": "Model Context Protocol servers for Playwright",
+  "name": "@lars-hagen/mcp-playwright-cdp",
+  "version": "0.1.0",
+  "description": "Model Context Protocol server for Playwright with Chrome DevTools Protocol support",
   "license": "MIT",
-  "author": "ExecuteAutomation, Ltd (https://executeautomation.com)",
-  "homepage": "https://executeautomation.github.io/mcp-playwright/",
-  "bugs": "https://github.com/executeautomation/mcp-playwright/issues",
+  "author": "Lars Hagen",
+  "homepage": "https://github.com/lars-hagen/mcp-playwright-cdp",
+  "bugs": "https://github.com/lars-hagen/mcp-playwright-cdp/issues",
   "types": "dist/index.d.ts",
   "type": "module",
   "bin": {
-    "playwright-mcp-server": "dist/index.js"
+    "mcp-playwright-cdp": "dist/index.js"
   },
   "files": [
     "dist"
@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/executeautomation/mcp-playwright.git"
+    "url": "https://github.com/lars-hagen/mcp-playwright-cdp.git"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.4.1",
     "playwright": "1.50.0",
     "@playwright/browser-chromium": "1.50.0"
   },
-  "keywords": ["playwright", "automation", "AI", "Claude MCP"],
+  "keywords": ["playwright", "automation", "AI", "Claude MCP", "CDP", "Chrome DevTools Protocol"],
   "devDependencies": {
     "@types/node": "^20.10.5",
     "shx": "^0.3.4",
