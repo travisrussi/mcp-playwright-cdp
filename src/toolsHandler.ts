@@ -156,7 +156,7 @@ export async function handleToolCall(
         }
 
         // Handle base64 storage
-        if (args.storeBase64 !== false) {
+        if (args.storeBase64 !== false && !process.argv.includes('--no-storebase64')) {
           screenshots.set(args.name, base64Screenshot);
           server.notification({
             method: "notifications/resources/list_changed",
