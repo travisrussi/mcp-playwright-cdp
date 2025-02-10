@@ -1,6 +1,6 @@
 # MCP Playwright CDP
-
 [![smithery badge](https://smithery.ai/badge/@lars-hagen/mcp-playwright-cdp)](https://smithery.ai/server/@lars-hagen/mcp-playwright-cdp)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/lars-hagen/mcp-playwright-cdp/blob/main/LICENSE)
 
 A Model Context Protocol server that provides browser automation capabilities using Playwright with Chrome DevTools Protocol (CDP) support. This server enables LLMs to interact with web pages, take screenshots, and execute JavaScript in a real browser environment, with the ability to connect to existing Chrome instances via CDP.
@@ -21,14 +21,17 @@ A Model Context Protocol server that provides browser automation capabilities us
 
 You can install the package using either npm or Smithery:
 
+### Installing via Smithery
+To install MCP Playwright CDP for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@lars-hagen/mcp-playwright-cdp):
+
+```bash
+npx -y @smithery/cli install @lars-hagen/mcp-playwright-cdp --client claude
+```
+
+### Manual Installation
 Using npm:
 ```bash
 npm install
-```
-
-Using Smithery:
-```bash
-npx -y @smithery/cli install @lars-hagen/mcp-playwright-cdp --client claude
 ```
 
 ## Configuration
