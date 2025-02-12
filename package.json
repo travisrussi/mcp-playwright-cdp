@@ -1,6 +1,6 @@
 {
   "name": "@lars-hagen/mcp-playwright-cdp",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Model Context Protocol server for Playwright with Chrome DevTools Protocol support",
   "license": "MIT",
   "author": "Lars Hagen",
@@ -28,7 +28,14 @@
     "playwright": "1.50.0",
     "@playwright/browser-chromium": "1.50.0"
   },
-  "keywords": ["playwright", "automation", "AI", "Claude MCP", "CDP", "Chrome DevTools Protocol"],
+  "keywords": [
+    "playwright",
+    "automation",
+    "AI",
+    "Claude MCP",
+    "CDP",
+    "Chrome DevTools Protocol"
+  ],
   "devDependencies": {
     "@types/node": "^20.10.5",
     "shx": "^0.3.4",
