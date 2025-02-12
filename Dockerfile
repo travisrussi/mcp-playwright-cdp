@@ -30,7 +30,7 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/package-lock.json ./package-lock.json
 
 # Install production dependencies including Playwright
-RUN npm ci --ignore-scripts --omit=dev && npx playwright install chromium
+RUN npm ci --ignore-scripts --omit=dev && npx playwright install
 
 # Set the command to run the server
 ENTRYPOINT ["node", "dist/index.js"]
