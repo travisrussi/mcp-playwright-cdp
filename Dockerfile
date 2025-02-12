@@ -29,8 +29,18 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/package-lock.json ./package-lock.json
 
-# Install production dependencies including Playwright
-RUN npm ci --ignore-scripts --omit=dev && npx playwright install
+# Install production dependencies and Playwright browsers
+RUN npm ci --ignore-scripts --omit=dev && \
+    npx playwright install chromium && \
+    npx playwright install-deps
+
+# Create a non-root user and set permissions
+RUN useradd -m mcpuser && \
+    chown -R mcpuser:mcpuser /app && \
+    chmod -R 755 /app
+
+# Switch to non-root user
+USER mcpuser
 
 # Set the command to run the server
 ENTRYPOINT ["node", "dist/index.js"]
