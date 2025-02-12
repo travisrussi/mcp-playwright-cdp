@@ -31,7 +31,7 @@ COPY --from=builder /app/package-lock.json ./package-lock.json
 
 # Install production dependencies and Playwright browsers
 RUN npm ci --ignore-scripts --omit=dev && \
-    npx playwright install chromium && \
+    npx playwright install && \
     npx playwright install-deps
 
 # Create a non-root user and set permissions

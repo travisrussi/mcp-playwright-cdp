@@ -26,7 +26,9 @@ async function ensureBrowser(viewport?: ViewportSize) {
       //console.log('Connected to existing Chrome instance');
     } catch (error) {
       //console.log('No existing Chrome instance found, launching new browser');
-      browser = await chromium.launch({ headless: false });
+      // Use headless mode by default in Docker
+      const isDocker = fs.existsSync('/.dockerenv');
+      browser = await chromium.launch({ headless: isDocker });
     }
 
     // For CDP connections, we need to use contexts() first
