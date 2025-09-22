@@ -468,6 +468,92 @@ export async function handleToolCall(
         };
       }
 
+    case "playwright_get_visible_html":
+      try {
+        let html: string;
+
+        if (args.selector) {
+          const element = await page!.$(args.selector);
+          if (!element) {
+            return {
+              content: [{
+                type: "text",
+                text: `Element not found: ${args.selector}`,
+              }],
+              isError: true,
+            };
+          }
+          html = await element.innerHTML();
+        } else {
+          html = await page!.content();
+        }
+
+        // Apply HTML cleaning options (defaults match original implementation)
+        const removeScripts = args.removeScripts !== false; // default: true
+        const removeComments = args.removeComments === true; // default: false
+        const removeStyles = args.removeStyles === true; // default: false
+        const removeMeta = args.removeMeta === true; // default: false
+        const cleanHtml = args.cleanHtml === true; // default: false
+        const minify = args.minify === true; // default: false
+        const maxLength = args.maxLength || 20000; // default: 20000
+
+        if (removeScripts) {
+          html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+        }
+
+        if (removeComments) {
+          html = html.replace(/<!--[\s\S]*?-->/g, '');
+        }
+
+        if (removeStyles) {
+          html = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
+        }
+
+        if (removeMeta) {
+          html = html.replace(/<meta\b[^>]*>/gi, '');
+        }
+
+        if (cleanHtml) {
+          // Remove empty attributes and normalize whitespace
+          html = html
+            .replace(/\s+/g, ' ')
+            .replace(/>\s+</g, '><')
+            .replace(/\s*=\s*""/g, '')
+            .trim();
+        }
+
+        if (minify) {
+          // More aggressive minification
+          html = html
+            .replace(/\s{2,}/g, ' ')
+            .replace(/>\s+</g, '><')
+            .replace(/\s+>/g, '>')
+            .replace(/<\s+/g, '<')
+            .trim();
+        }
+
+        // Truncate if needed
+        if (html.length > maxLength) {
+          html = html.substring(0, maxLength) + '...';
+        }
+
+        return {
+          content: [{
+            type: "text",
+            text: html,
+          }],
+          isError: false,
+        };
+      } catch (error) {
+        return {
+          content: [{
+            type: "text",
+            text: `Failed to get visible HTML: ${(error as Error).message}`,
+          }],
+          isError: true,
+        };
+      }
+
     default:
       return {
         content: [{
