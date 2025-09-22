@@ -149,6 +149,24 @@ export function createToolDefinitions(): Tool[] {
         required: ["url"],
       },
     },
+    {
+      name: "playwright_get_visible_html",
+      description: "Get the HTML content of the current page. By default, all <script> tags are removed from the output unless removeScripts is explicitly set to false.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          selector: { type: "string", description: "CSS selector to limit the HTML to a specific container" },
+          removeScripts: { type: "boolean", description: "Remove all script tags from the HTML (default: true)" },
+          removeComments: { type: "boolean", description: "Remove all HTML comments (default: false)" },
+          removeStyles: { type: "boolean", description: "Remove all style tags from the HTML (default: false)" },
+          removeMeta: { type: "boolean", description: "Remove all meta tags from the HTML (default: false)" },
+          cleanHtml: { type: "boolean", description: "Perform comprehensive HTML cleaning (default: false)" },
+          minify: { type: "boolean", description: "Minify the HTML output (default: false)" },
+          maxLength: { type: "number", description: "Maximum number of characters to return (default: 20000)" }
+        },
+        required: [],
+      },
+    },
   ];
 }
 
@@ -160,7 +178,8 @@ export const BROWSER_TOOLS = [
   "playwright_fill",
   "playwright_select",
   "playwright_hover",
-  "playwright_evaluate"
+  "playwright_evaluate",
+  "playwright_get_visible_html"
 ];
 
 // API Request tools for conditional launch
